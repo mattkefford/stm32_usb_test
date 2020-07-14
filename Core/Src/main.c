@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "usbd_cdc_if.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,7 +35,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RX_BUFF_LEN 64u
+#define RX_BUFF_LEN 64
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -46,7 +47,7 @@
 CAN_HandleTypeDef hcan;
 
 /* USER CODE BEGIN PV */
-uint8_t rxBuffer[RX_BUFF_LEN] = {0};
+//uint8_t rxBuffer[RX_BUFF_LEN] = {0};
 uint8_t count = 0;
 extern USBD_HandleTypeDef hUsbDeviceFS;
 /* USER CODE END PV */
@@ -56,7 +57,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_CAN_Init(void);
 /* USER CODE BEGIN PFP */
-
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -95,17 +95,19 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_CAN_Init();
   /* USER CODE BEGIN 2 */
-	uint8_t msgBuf[32] = "Hello from Saga STM32 Main PCB\r\n";
+	uint8_t msgBuf[] = "Hello from Saga STM32 Main PCB built in USB\r\n";
 	
+	/*
 	uint32_t halVersion = HAL_GetHalVersion();
 	uint32_t halRevID = HAL_GetREVID();
 	uint32_t halDevID = HAL_GetDEVID();
 	uint32_t halUID0 = HAL_GetUIDw0();
 	uint32_t halUID1 = HAL_GetUIDw1();
 	uint32_t halUID2 = HAL_GetUIDw2();
+	*/
 	
-	char versionBuf[250] = {0};
-	sprintf(versionBuf, "STM32F072\r\nHAL Version: %d\r\nHAL Rev: %d\r\nHAL Dev: %d\r\nHAL UID1: %d\r\nHAL UID2: %d\r\nHAL UID3: %d\r\n", halVersion, halRevID, halDevID, halUID0, halUID1, halUID2);
+	//char versionBuf[250] = {0};
+	//sprintf(versionBuf, "STM32F072\r\nHAL Version: %d\r\nHAL Rev: %d\r\nHAL Dev: %d\r\nHAL UID1: %d\r\nHAL UID2: %d\r\nHAL UID3: %d\r\n", halVersion, halRevID, halDevID, halUID0, halUID1, halUID2);
 	
   /* USER CODE END 2 */
 
@@ -114,25 +116,10 @@ int main(void)
   while (1)
   {
     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-		CDC_Transmit_FS(msgBuf, sizeof(msgBuf));
-		
-		HAL_Delay(2000);
-		
-		//CDC_Transmit_FS((uint8_t*)versionBuf, sizeof(versionBuf));
-		
-		
-		
-		//HAL_Delay(50);
-		
-		//HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-		
-		//HAL_Delay(9950);
-		
-		HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-		//CDC_Transmit_FS(testBuffer, sizeof(testBuffer));
-		
-		HAL_Delay(8000);
-		
+		CDC_Transmit_FS(msgBuf, strlen((const char *)msgBuf));		
+		HAL_Delay(100);		
+		HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);		
+		HAL_Delay(9900);
 		
     /* USER CODE END WHILE */
 
@@ -307,9 +294,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if(GPIO_Pin == B1_Pin)
 	{
-		uint8_t testBuf[] = "Testing...\r\n";
+		const char testBuf[15] = "Testing...\r\n";
 		HAL_GPIO_TogglePin(LD5_GPIO_Port, LD5_Pin);
-		CDC_Transmit_FS(testBuf, sizeof(testBuf));
+		CDC_Transmit_FS((uint8_t *)testBuf, strlen(testBuf));
 	}
 }
 

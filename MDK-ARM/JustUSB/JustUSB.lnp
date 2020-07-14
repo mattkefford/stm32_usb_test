@@ -3,6 +3,7 @@
 "justusb\main.o"
 "justusb\stm32f0xx_it.o"
 "justusb\stm32f0xx_hal_msp.o"
+"justusb\thorvald_packet.o"
 "justusb\usb_device.o"
 "justusb\usbd_desc.o"
 "justusb\usbd_cdc_if.o"

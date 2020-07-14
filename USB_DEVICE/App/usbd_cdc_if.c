@@ -23,7 +23,7 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "thorvald_packet.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -73,8 +73,8 @@ USBD_CDC_LineCodingTypeDef LineCoding_t =
 /* USER CODE BEGIN PRIVATE_DEFINES */
 /* Define size for the receive and transmit buffer over CDC */
 /* It's up to user to redefine and/or remove those define */
-#define APP_RX_DATA_SIZE  768
-#define APP_TX_DATA_SIZE  768
+#define APP_RX_DATA_SIZE  64
+#define APP_TX_DATA_SIZE  64
 /* USER CODE END PRIVATE_DEFINES */
 
 /**
@@ -235,22 +235,6 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 			LineCoding_t.format = pbuf[4];
 			LineCoding_t.paritytype = pbuf[5];
 			LineCoding_t.datatype = pbuf[6];
-		
-//			lineCodingBuff[0] = pbuf[0];
-//			lineCodingBuff[1] = pbuf[1];
-//			lineCodingBuff[2] = pbuf[2];
-//			lineCodingBuff[3] = pbuf[3];
-//			lineCodingBuff[4] = pbuf[4];
-//			lineCodingBuff[5] = pbuf[5];
-//			lineCodingBuff[6] = pbuf[6];
-		
-			//memcpy( lineCoding, pbuf, sizeof(lineCoding) );
-		
-		
-//			for(uint8_t x = 0; x < length; x++)
-//			{
-//				tempBuff[x] = pbuf[x];
-//			}
     break;
 
     case CDC_GET_LINE_CODING:
@@ -261,11 +245,6 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 			pbuf[4] = LineCoding_t.format;
 			pbuf[5] = LineCoding_t.paritytype;
 			pbuf[6] = LineCoding_t.datatype;
-		
-//			for(uint8_t x = 0; x < length; x++)
-//			{
-//				tempBuff[x] = pbuf[x];
-//			}
     break;
 
     case CDC_SET_CONTROL_LINE_STATE:
@@ -301,8 +280,11 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
-  USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
+  //USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
+	
+	thorvald_packet_parse(Buf, Len);
+	
 	//CDC_Transmit_FS(Buf, *Len);
   return (USBD_OK);
   /* USER CODE END 6 */

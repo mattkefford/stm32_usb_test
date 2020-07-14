@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -407,6 +407,16 @@
               <FileName>stm32f0xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f0xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>thorvald_packet.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\thorvald_packet.h</FilePath>
+            </File>
+            <File>
+              <FileName>thorvald_packet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\thorvald_packet.c</FilePath>
             </File>
           </Files>
         </Group>
