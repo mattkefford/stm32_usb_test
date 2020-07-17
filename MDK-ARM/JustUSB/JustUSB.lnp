@@ -1,9 +1,10 @@
 --cpu Cortex-M0
 "justusb\startup_stm32f072xb.o"
+"justusb\thorvald_msg.o"
 "justusb\main.o"
 "justusb\stm32f0xx_it.o"
 "justusb\stm32f0xx_hal_msp.o"
-"justusb\thorvald_packet.o"
+"justusb\crc16.o"
 "justusb\usb_device.o"
 "justusb\usbd_desc.o"
 "justusb\usbd_cdc_if.o"
@@ -25,6 +26,8 @@
 "justusb\stm32f0xx_hal_flash_ex.o"
 "justusb\stm32f0xx_hal_exti.o"
 "justusb\stm32f0xx_hal_can.o"
+"justusb\stm32f0xx_hal_crc.o"
+"justusb\stm32f0xx_hal_crc_ex.o"
 "justusb\stm32f0xx_hal_tim.o"
 "justusb\stm32f0xx_hal_tim_ex.o"
 "justusb\system_stm32f0xx.o"
@@ -32,6 +35,8 @@
 "justusb\usbd_ctlreq.o"
 "justusb\usbd_ioreq.o"
 "justusb\usbd_cdc.o"
+"justusb\eventrecorder.o"
+"justusb\retarget_io.o"
 --library_type=microlib --strict --scatter "JustUSB\JustUSB.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

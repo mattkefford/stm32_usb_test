@@ -23,7 +23,7 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-#include "thorvald_packet.h"
+#include "thorvald_msg.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -283,7 +283,8 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   //USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
 	
-	thorvald_packet_parse(Buf, Len);
+	//thorvald_packet_parse(Buf, Len);
+	thorvald_msg_add_to_inbox(Buf, Len);
 	
 	//CDC_Transmit_FS(Buf, *Len);
   return (USBD_OK);

@@ -28,6 +28,8 @@ justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_can.h
+justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_crc.h
+justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_crc_ex.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h
@@ -37,6 +39,7 @@ justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usb.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pcd_ex.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h
 justusb\usbd_ctlreq.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h
+justusb\usbd_ctlreq.o: ../Core/Inc/app_config.h
 justusb\usbd_ctlreq.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 justusb\usbd_ctlreq.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 justusb\usbd_ctlreq.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h

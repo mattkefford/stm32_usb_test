@@ -22,6 +22,8 @@ justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h
 justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h
 justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h
 justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_can.h
+justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_crc.h
+justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_crc_ex.h
 justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h
 justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h
 justusb\usb_device.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h
@@ -37,6 +39,7 @@ justusb\usb_device.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 justusb\usb_device.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 justusb\usb_device.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 justusb\usb_device.o: ../Core/Inc/main.h
+justusb\usb_device.o: ../Core/Inc/app_config.h
 justusb\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 justusb\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 justusb\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h

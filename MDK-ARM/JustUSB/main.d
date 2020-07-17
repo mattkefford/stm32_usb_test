@@ -22,6 +22,8 @@ justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_can.h
+justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_crc.h
+justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_crc_ex.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h
@@ -31,6 +33,7 @@ justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usb.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pcd_ex.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h
 justusb\main.o: ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h
+justusb\main.o: ../Core/Inc/app_config.h
 justusb\main.o: ../USB_DEVICE/App/usb_device.h
 justusb\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 justusb\main.o: ../USB_DEVICE/Target/usbd_conf.h
@@ -43,3 +46,4 @@ justusb\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 justusb\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 justusb\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 justusb\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+justusb\main.o: C:\Keil_v5\ARM\PACK\Keil\ARM_Compiler\1.6.3\Include\EventRecorder.h

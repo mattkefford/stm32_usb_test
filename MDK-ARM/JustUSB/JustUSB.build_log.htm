@@ -22,23 +22,12 @@ Dialog DLL:      TARMCM1.DLL V1.14.2.0
  
 <h2>Project:</h2>
 C:\Users\Matt Kefford\Documents\Repos\JustUSB\MDK-ARM\JustUSB.uvprojx
-Project File Date:  07/14/2020
+Project File Date:  07/17/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'JustUSB'
-compiling thorvald_packet.c...
-..\Core\Src\thorvald_packet.c(37): warning:  #550-D: variable "canPacket"  was set but never used
-  		T_CAN_PACKET canPacket = {0};
-..\Core\Src\thorvald_packet.c(42): warning:  #174-D: expression has no effect
-  		__NOP;
-..\Core\Src\thorvald_packet.c: 2 warnings, 0 errors
-compiling usbd_cdc_if.c...
-compiling main.c...
-linking...
-Program Size: Code=18224 RO-data=264 RW-data=404 ZI-data=3652  
-FromELF: creating hex file...
-"JustUSB\JustUSB.axf" - 0 Error(s), 2 Warning(s).
+"JustUSB\JustUSB.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -49,19 +38,36 @@ Package Vendor: ARM
    * Component: CORE Version: 5.4.0
 
 Package Vendor: Keil
+                http://www.keil.com/pack/Keil.ARM_Compiler.1.6.3.pack
+                Keil.ARM_Compiler.1.6.3
+                Keil ARM Compiler extensions for ARM Compiler 5 and ARM Compiler 6
+   * Component: Event Recorder Variant: DAP Version: 1.4.0
+   * Component: STDOUT Variant: EVR Version: 1.2.0
+
+Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F0xx_DFP.2.1.0.pack
                 Keil.STM32F0xx_DFP.2.1.0
                 STMicroelectronics STM32F0 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
+  .\RTE\Compiler
   .\RTE\_JustUSB
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Keil_v5\ARM\PACK\Keil\ARM_Compiler\1.6.3\Include
   C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:04
+
+   * Component: Keil.ARM Compiler::Compiler:Event Recorder:DAP:1.4.0
+      Source file:   Source\EventRecorder.c
+      Include file:  Include\EventRecorder.h
+      Include file:  Config\EventRecorderConf.h
+
+   * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:EVR:1.2.0
+      Source file:   Source\retarget_io.c
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

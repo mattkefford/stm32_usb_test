@@ -26,6 +26,8 @@
 /* USER CODE BEGIN Includes */
 #include "usbd_cdc_if.h"
 #include <string.h>
+#include "EventRecorder.h"		// Keil.ARM Compiler::Compiler:Event Recorder
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,7 +37,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RX_BUFF_LEN 64
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -46,17 +47,30 @@
 /* Private variables ---------------------------------------------------------*/
 CAN_HandleTypeDef hcan;
 
+CRC_HandleTypeDef hcrc;
+
 /* USER CODE BEGIN PV */
-//uint8_t rxBuffer[RX_BUFF_LEN] = {0};
-uint8_t count = 0;
-extern USBD_HandleTypeDef hUsbDeviceFS;
+//extern USBD_HandleTypeDef hUsbDeviceFS;
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_CAN_Init(void);
+static void MX_CRC_Init(void);
 /* USER CODE BEGIN PFP */
+
+
+
+
+//unsigned long crcbitbybitfast(unsigned char* p, unsigned long len);
+
+
+
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -94,25 +108,18 @@ int main(void)
   MX_GPIO_Init();
   MX_USB_DEVICE_Init();
   MX_CAN_Init();
+  MX_CRC_Init();
   /* USER CODE BEGIN 2 */
+	EventRecorderInitialize(EventRecordAll, 1);
+	
 	uint8_t msgBuf[] = "Hello from Saga STM32 Main PCB built in USB\r\n";
-	
-	/*
-	uint32_t halVersion = HAL_GetHalVersion();
-	uint32_t halRevID = HAL_GetREVID();
-	uint32_t halDevID = HAL_GetDEVID();
-	uint32_t halUID0 = HAL_GetUIDw0();
-	uint32_t halUID1 = HAL_GetUIDw1();
-	uint32_t halUID2 = HAL_GetUIDw2();
-	*/
-	
-	//char versionBuf[250] = {0};
-	//sprintf(versionBuf, "STM32F072\r\nHAL Version: %d\r\nHAL Rev: %d\r\nHAL Dev: %d\r\nHAL UID1: %d\r\nHAL UID2: %d\r\nHAL UID3: %d\r\n", halVersion, halRevID, halDevID, halUID0, halUID1, halUID2);
+	//uint8_t testBuff[] = {99, 5, 4, 8, 0, 0, 0, 0, 0, 0, 0, 0};
 	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   while (1)
   {
     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
@@ -211,6 +218,45 @@ static void MX_CAN_Init(void)
 }
 
 /**
+  * @brief CRC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CRC_Init(void)
+{
+
+  /* USER CODE BEGIN CRC_Init 0 */
+
+  /* USER CODE END CRC_Init 0 */
+
+  /* USER CODE BEGIN CRC_Init 1 */
+
+  /* USER CODE END CRC_Init 1 */
+  hcrc.Instance = CRC;
+  hcrc.Init.DefaultPolynomialUse = DEFAULT_POLYNOMIAL_DISABLE;
+  hcrc.Init.DefaultInitValueUse = DEFAULT_INIT_VALUE_DISABLE;
+  hcrc.Init.GeneratingPolynomial = 0x8005;
+  hcrc.Init.CRCLength = CRC_POLYLENGTH_16B;
+  hcrc.Init.InitValue = 0;
+  hcrc.Init.InputDataInversionMode = CRC_INPUTDATA_INVERSION_NONE;
+  hcrc.Init.OutputDataInversionMode = CRC_OUTPUTDATA_INVERSION_DISABLE;
+  hcrc.InputDataFormat = CRC_INPUTDATA_FORMAT_BYTES;
+  if (HAL_CRC_Init(&hcrc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CRC_Init 2 */
+	
+	// Set the custom SAGA CRC polynomial for the CRC block to use
+	if (HAL_CRCEx_Polynomial_Set(&hcrc, 0x8408, CRC_POLYLENGTH_16B) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE END CRC_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -300,33 +346,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 }
 
-
-///**
-//  * @brief  Connection event callback.
-//  * @param  hpcd PCD handle
-//  * @retval None
-//  */
-//void HAL_PCD_ConnectCallback(PCD_HandleTypeDef *hpcd)
-//{
-//  UNUSED(hpcd);
-//	
-//	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-//}
-
-///**
-//  * @brief  Disconnection event callback.
-//  * @param  hpcd PCD handle
-//  * @retval None
-//  */
-//void HAL_PCD_DisconnectCallback(PCD_HandleTypeDef *hpcd)
-//{
-//  UNUSED(hpcd);
-
-//	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-//}
-
-
-
 /* USER CODE END 4 */
 
 /**
@@ -337,7 +356,8 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-
+	while(1);	// there has been an error, make program hang here and inspect the stack trace
+	
   /* USER CODE END Error_Handler_Debug */
 }
 

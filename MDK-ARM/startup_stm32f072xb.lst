@@ -378,11 +378,12 @@ ARM Macro Assembler    Page 6
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
 ork --depend=justusb\startup_stm32f072xb.d -ojustusb\startup_stm32f072xb.o -I.\
-RTE\_JustUSB -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Core\Include -IC:\Keil
-_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include
- --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 530" --pre
-define="_RTE_ SETA 1" --predefine="STM32F072xB SETA 1" --predefine="_RTE_ SETA 
-1" --list=startup_stm32f072xb.lst startup_stm32f072xb.s
+RTE\Compiler -I.\RTE\_JustUSB -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Core\
+Include -IC:\Keil_v5\ARM\PACK\Keil\ARM_Compiler\1.6.3\Include -IC:\Keil_v5\ARM\
+PACK\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include --prede
+fine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 530" --predefine="
+_RTE_ SETA 1" --predefine="STM32F072xB SETA 1" --predefine="_RTE_ SETA 1" --lis
+t=startup_stm32f072xb.lst startup_stm32f072xb.s
 
 
 
